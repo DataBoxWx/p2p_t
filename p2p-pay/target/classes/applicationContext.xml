@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/tx  
+        http://www.springframework.org/schema/tx/spring-tx.xsd 
+        http://www.springframework.org/schema/aop  
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--加载系统配置文件-->
+    <context:property-placeholder location="classpath:alipay-config.properties"/>
+
+    <bean class="com.bjpowernode.pay.config.PayConfig">
+        <property name="alipay_app_id" value="${alipay_app_id}"/>
+        <property name="alipay_charset" value="${alipay_charset}"/>
+        <property name="alipay_format" value="${alipay_format}"/>
+        <property name="alipay_gatewayUrl" value="${alipay_gatewayUrl}"/>
+        <property name="alipay_method" value="${alipay_method}"/>
+        <property name="alipay_public_key" value="${alipay_public_key}"/>
+        <property name="alipay_sign_type" value="${alipay_sign_type}"/>
+        <property name="alipay_version" value="${alipay_version}"/>
+        <property name="merchant_private_key" value="${merchant_private_key}"/>
+        <property name="alipay_return_url" value="${alipay_return_url}"/>
+        <property name="alipay_notify_url" value="${alipay_notify_url}"/>
+        <property name="pay_p2p_return_url" value="${pay_p2p_return_url}"/>
+    </bean>
+
+
+    <!-- 导入spring mvc配置文件 -->
+    <import resource="applicationContext-mvc.xml"/>
+
+
+</beans>
